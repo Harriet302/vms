@@ -89,82 +89,8 @@
       <!-- /.row -->
       <div class="row">
          <!-- Left col -->
-         <div class="row col-md-12">
-            <?php if(userpermission('lr_ie_list')) { ?>
-            <div class="col-md-6">
-               <!-- TABLE: LATEST ORDERS -->
-               <div class="card">
-                  <div class="card-header">
-                     <h2 class="card-title">Deliveries made</h2>
-                  </div>
-                  <div class="card-header border-transparent">
-                     <div class="card-body">
-                        <div class="d-flex">
-                           <p class="d-flex flex-column">
-                           </p>
-                           <p class="ml-auto d-flex flex-column text-right">
-                              <span class="text-success">
-                              </span>
-                           </p>
-                        </div>
-                        <!-- /.d-flex -->
-                        <div class="position-relative mb-4">
-                           <div class="chartjs-size-monitor">
-                              <div class="chartjs-size-monitor-expand">
-                                 <div class=""></div>
-                              </div>
-                              <div class="chartjs-size-monitor-shrink">
-                                 <div class=""></div>
-                              </div>
-                           </div>
-                           <canvas id="ie-chart" height="150" width="487" class="chartjs-render-monitor" style="display: block; width: 487px; height: 200px;"></canvas>
-                        </div>
-                        <div class="d-flex flex-row justify-content-end">
-                           <span class="mr-2">
-                           <i class="fas fa-square text-success"></i> Delivered
-                           </span>
-                           <span>
-                           <i class="fas fa-square text-danger"></i> Failed 
-                           </span>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <?php } if(userpermission('lr_reminder_list')) { ?>
-            <div class="col-md-6">
-               <div class="card">
-                  <div class="card-header ui-sortable-handle" style="cursor: move;">
-                     <h3 class="card-title">
-                        <i class="ion ion-clipboard mr-1"></i>
-                        Notifications
-                     </h3>
-                     <div class="card-tools">
-                     </div>
-                  </div>
-                  <!-- /.card-header -->
-                  <div class="card-body">
-                     <ul class="todo-list ui-sortable" data-widget="todo-list">
-                        <?php if(!empty($todayreminder)) { foreach($todayreminder as $reminder) { ?>
-                        <li id="<?= $reminder['r_id'] ?>">
-                           <span class="text">
-                              <?= $reminder['r_message']. ' ';  ?>    
-                              <div class="tools"> 
-                                 <button type="button" data-id="<?= $reminder['r_id'] ?>" class="todayreminderread btn btn-block btn-outline-primary btn-xs">Mark as Read</button>                 
-                              </div>
-                           </span>
-                        </li>
-                        <?php }  } else { echo 'No reminders'; } ?>  
-                     </ul>
-                  </div>
-                  <!-- /.card-body -->
-                  <div class="card-footer clearfix">
-                     <a href="<?= base_url() ?>reminder/addreminder"><button type="button" class="btn btn-info float-right"><i class="fas fa-plus"></i> Add Reminder</button></a>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <?php } if(userpermission('lr_liveloc')) { ?>
+         
+         <?php if(userpermission('lr_liveloc')) { ?>
          <div class="col-sm-6 col-lg-6 ">
             <div class="card ">
                <div class="card-header">
@@ -246,6 +172,38 @@
                </div>
             </div>
          </div>
+         <?php } if(userpermission('lr_reminder_list')) { ?>
+            <div class="col-md-6">
+               <div class="card">
+                  <div class="card-header ui-sortable-handle" style="cursor: move;">
+                     <h3 class="card-title">
+                        <i class="ion ion-clipboard mr-1"></i>
+                        Notifications
+                     </h3>
+                     <div class="card-tools">
+                     </div>
+                  </div>
+                  <!-- /.card-header -->
+                  <div class="card-body">
+                     <ul class="todo-list ui-sortable" data-widget="todo-list">
+                        <?php if(!empty($todayreminder)) { foreach($todayreminder as $reminder) { ?>
+                        <li id="<?= $reminder['r_id'] ?>">
+                           <span class="text">
+                              <?= $reminder['r_message']. ' ';  ?>    
+                              <div class="tools"> 
+                                 <button type="button" data-id="<?= $reminder['r_id'] ?>" class="todayreminderread btn btn-block btn-outline-primary btn-xs">Mark as Read</button>                 
+                              </div>
+                           </span>
+                        </li>
+                        <?php }  } else { echo 'No reminders'; } ?>  
+                     </ul>
+                  </div>
+                  <!-- /.card-body -->
+                  <div class="card-footer clearfix">
+                     <a href="<?= base_url() ?>reminder/addreminder"><button type="button" class="btn btn-info float-right"><i class="fas fa-plus"></i> Add Reminder</button></a>
+                  </div>
+               </div>
+            </div>
          <?php } ?>
       </div>
       <!-- /.card -->
