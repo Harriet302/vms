@@ -1,13 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Trips extends CI_Controller {
+class Consignments extends CI_Controller {
 
 	 function __construct()
      {
           parent::__construct();
           $this->load->database();
-          $this->load->model('trips_model');
+          $this->load->model('consignments_model');
           $this->load->model('customer_model');	
           $this->load->model('drivers_model');	
           $this->load->helper(array('form', 'url','string'));
@@ -17,88 +17,90 @@ class Trips extends CI_Controller {
 
 	public function index()
 	{
-		$data['triplist'] = $this->trips_model->getall_trips();
-		$this->template->template_render('trips_management',$data);
+		$data['consignmentslist'] = $this->consignments_model->getall_consignments();
+		$this->template->template_render('consignments_management',$data);
 	}
-	public function addtrips()
+
+	public function addconsignments()
 	{
-		$data['customerlist'] = $this->trips_model->getall_customer();
-		$data['vechiclelist'] = $this->trips_model->getall_vechicle();
-		$data['driverlist'] = $this->trips_model->getall_driverlist();
-		$this->template->template_render('trips_add',$data);
+		$data['customerlist'] = $this->consignments_model->getall_customer();
+		$data['vechiclelist'] = $this->consignments_model->getall_vechicle();
+		$data['driverlist'] = $this->consignments_model->getall_driverlist();
+		$this->template->template_render('consignments_add', $data);
 	}
-	public function inserttrips() 
+
+	public function insertconsignments() 
 	{
 		$testxss = xssclean($_POST);
 		if($testxss){
-			$response = $this->trips_model->add_trips($this->input->post());
+			$response = $this->consignments_model->add_consignments($this->input->post());
 			$bookingemail = $this->input->post('bookingemail');
 			if(isset($bookingemail)) {
 				$this->sendtripemail($this->input->post());
 			}
 			if($response) {
-				$this->session->set_flashdata('successmessage', 'New trip added successfully..');
+				$this->session->set_flashdata('successmessage', 'New Consignment added successfully..');
 			} else {
 				$this->session->set_flashdata('warningmessage', 'Unexpected error..Try again');
 			}
-			redirect('trips');
+			redirect('consignments');
 		} else {
 			$this->session->set_flashdata('warningmessage', 'Error! Your input are not allowed.Please try again');
-			redirect('trips');
+			redirect('consignments');
 		}
 	}
-	public function edittrip()
+	public function editconsignment()
 	{
-		$data['customerlist'] = $this->trips_model->getall_customer();
-		$data['vechiclelist'] = $this->trips_model->getall_vechicle();
-		$data['driverlist'] = $this->trips_model->getall_driverlist();
+		$data['customerlist'] = $this->consignments_model->getall_customer();
+		$data['vechiclelist'] = $this->consignments_model->getall_vechicle();
+		$data['driverlist'] = $this->consignments_model->getall_driverlist();
 		$t_id = $this->uri->segment(3);
-		$data['tripdetails'] = $this->trips_model->get_tripdetails($t_id);
+		$data['consignmentdetails'] = $this->consignments_model->get_consignmentdetails($t_id);
 		
-		$this->template->template_render('trips_add',$data);
+		$this->template->template_render('consignments_add',$data);
 	}
 
-	public function updatetrips()
+	public function updateconsignments()
 	{
 		$testxss = xssclean($_POST);
 		if($testxss){
-			$response = $this->trips_model->update_trips($this->input->post());
+			$response = $this->consignments_model->update_consignments($this->input->post());
 			if($response) {
-				$this->session->set_flashdata('successmessage', 'New trip added successfully..');
+				$this->session->set_flashdata('successmessage', 'Consignment Updated successfully..');
 			} else {
 				$this->session->set_flashdata('warningmessage', 'Unexpected error..Try again');
 			}
-			redirect('trips');
+			redirect('consignments');
 		} else {
 			$this->session->set_flashdata('warningmessage', 'Error! Your input are not allowed.Please try again');
-			redirect('trips');
+			redirect('consignments');
 		}
 	}
 	public function details()
 	{
 		$data = array();
 		$b_id = $this->uri->segment(3);
-		$tripdetails = $this->trips_model->get_tripdetails($b_id);
-		if(isset($tripdetails[0]['t_id'])) {
-			$customerdetails = $this->customer_model->get_customerdetails($tripdetails[0]['t_customer_id']);
-			$driverdetails = $this->drivers_model->get_driverdetails($tripdetails[0]['t_driver']);
-			$data['paymentdetails'] = $this->trips_model->get_paymentdetails($tripdetails[0]['t_id']);
-			$data['tripdetails'] = $tripdetails[0];
+		$consignmentdetails = $this->consignments_model->get_consignmentdetails($b_id);
+		if(isset($consignmentdetails[0]['t_id'])) {
+			$customerdetails = $this->customer_model->get_customerdetails($consignmentdetails[0]['t_customer_id']);
+			$driverdetails = $this->drivers_model->get_driverdetails($consignmentdetails[0]['t_driver']);
+			$data['paymentdetails'] = $this->consignments_model->get_paymentdetails($consignmentdetails[0]['t_id']);
+			$data['consignmentdetails'] = $consignmentdetails[0];
 			$data['customerdetails'] = (isset($customerdetails[0]['c_id']))?$customerdetails[0]:'';
 			$data['driverdetails'] =  (isset($driverdetails[0]['d_id']))?$driverdetails[0]:'';
 		}
-		$this->template->template_render('trips_details',$data);
+		$this->template->template_render('consignments_details',$data);
 	}
 	public function invoice()
 	{
 		$data = array();
 		$b_id = $this->uri->segment(3);
-		$tripdetails = $this->trips_model->get_tripdetails($b_id);
-		if(isset($tripdetails[0]['t_id'])) {
-			$customerdetails = $this->customer_model->get_customerdetails($tripdetails[0]['t_customer_id']);
-			$driverdetails = $this->drivers_model->get_driverdetails($tripdetails[0]['t_driver']);
-			$data['paymentdetails'] = $this->trips_model->get_paymentdetails($tripdetails[0]['t_id']);
-			$data['tripdetails'] = $tripdetails[0];
+		$consignmentdetails = $this->consignments_model->get_consignmentdetails($b_id);
+		if(isset($consignmentdetails[0]['t_id'])) {
+			$customerdetails = $this->customer_model->get_customerdetails($consignmentdetails[0]['t_customer_id']);
+			$driverdetails = $this->drivers_model->get_driverdetails($consignmentdetails[0]['t_driver']);
+			$data['paymentdetails'] = $this->consignments_model->get_paymentdetails($consignmentdetails[0]['t_id']);
+			$data['consignmentdetails'] = $consignmentdetails[0];
 			$data['customerdetails'] = (isset($customerdetails[0]['c_id']))?$customerdetails[0]:'';
 			$data['driverdetails'] =  (isset($driverdetails[0]['d_id']))?$driverdetails[0]:'';
 		}
@@ -111,10 +113,10 @@ class Trips extends CI_Controller {
 		if($this->db->insert_id()) {
 			$addincome = array('ie_v_id'=>$this->input->post('tp_v_id'),'ie_date'=>date('Y-m-d'),'ie_type'=>'income','ie_description'=>'payment from trip and '.$this->input->post('tp_notes'),'ie_amount'=>$this->input->post('tp_amount'),'ie_created_date'=>date('Y-m-d'));
 			$this->db->insert('incomeexpense',$addincome);
-			redirect('trips/details/'.$pyment['tp_trip_id']);
+			redirect('consignments/details/'.$pyment['tp_trip_id']);
 		} else {
 			$this->session->set_flashdata('warningmessage', 'Error!. Please try again');
-			redirect('trips/details/'.$pyment['tp_trip_id']);
+			redirect('consignments/details/'.$pyment['tp_trip_id']);
 		}
 	}
 	public function trippayment_delete()
@@ -126,7 +128,7 @@ class Trips extends CI_Controller {
 		} else {
 			$this->session->set_flashdata('warningmessage', 'Unexpected error..Try again');
 		}
-		redirect('trips/details/'.$this->uri->segment(4));
+		redirect('consignments/details/'.$this->uri->segment(4));
 	}
 	public function addtripexpense() 	{
 		$addtripexpense = $this->input->post();
@@ -138,7 +140,7 @@ class Trips extends CI_Controller {
 		} else {
 			$this->session->set_flashdata('warningmessage', 'Unexpected error..Try again');
 		}
-		redirect('trips/details/'.$trip_id);
+		redirect('consignments/details/'.$trip_id);
 	}
 	public function sendtripemail($data) {
 		$this->load->model('email_model');	
@@ -165,7 +167,7 @@ class Trips extends CI_Controller {
 			} else {
 				$this->session->set_flashdata('warningmessage', 'Unexpected error..Try again');
 			}
-			redirect('trips/details/'.$_GET['t_id']);
+			redirect('consignments/details/'.$_GET['t_id']);
 		}
 	}
 }

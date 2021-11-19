@@ -153,7 +153,7 @@
             <div class="col-md-6">
                <form id="booking" method="POST" class="basicvalidation" action="<?php echo base_url();?>frontendbooking/book">
                   <section id="Search" class="LB XXCN  P20">
-                     <h1 class="bookTic XCN TextSemiBold" ><?= output($data['s_companyname']); ?></h1>
+                     <h1 class="bookTic XCN TextSemiBold text-center" ><?= output($data['s_companyname']); ?></h1>
                      <div class="searchRow clearfix">
                         <div class="LB">
                            <label class="inputLabel">From</label>
@@ -198,8 +198,8 @@
                </form>
             </div>
             <div class="col-md-6">
-               <div class="tb_bus">
-                  <img width="500" height="300" src="<?= base_url(); ?>assets/uploads/fronendimg.jpg">
+               <div class="tb_bus align-center">
+                  <img width="450" height="450" src="<?= base_url(); ?>assets/uploads/fronendimg.jpg">
                </div>
             </div>
          </div>

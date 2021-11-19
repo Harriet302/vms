@@ -21,9 +21,9 @@ class Fuel extends CI_Controller {
 	}
 	public function addfuel()
 	{
-		$this->load->model('trips_model');
-		$data['driverlist'] = $this->trips_model->getall_driverlist();
-		$data['vechiclelist'] = $this->trips_model->getall_vechicle();
+		$this->load->model('consignments_model');
+		$data['driverlist'] = $this->consignments_model->getall_driverlist();
+		$data['vechiclelist'] = $this->consignments_model->getall_vechicle();
 		$this->template->template_render('fuel_add',$data);
 	}
 	public function insertfuel()
@@ -50,9 +50,9 @@ class Fuel extends CI_Controller {
 	public function editfuel()
 	{
 		$f_id = $this->uri->segment(3);
-		$this->load->model('trips_model');
-		$data['vechiclelist'] = $this->trips_model->getall_vechicle();
-		$data['driverlist'] = $this->trips_model->getall_driverlist();
+		$this->load->model('consignments_model');
+		$data['vechiclelist'] = $this->consignments_model->getall_vechicle();
+		$data['driverlist'] = $this->consignments_model->getall_driverlist();
 		$data['fueldetails'] = $this->fuel_model->editfuel($f_id);
 		$this->template->template_render('fuel_add',$data);
 	}

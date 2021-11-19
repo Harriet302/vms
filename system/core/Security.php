@@ -469,7 +469,7 @@ class CI_Security {
 		 * Note: It was reported that not only space characters, but all in
 		 * the following pattern can be parsed as separators between a tag name
 		 * and its attributes: [\d\s"\'`;,\/\=\(\x00\x0B\x09\x0C]
-		 * ... however, remove_invisible_characters() above already strips the
+		 * ... however, remove_invisible_characters() above already sconsignments the
 		 * hex-encoded ones, so we'll skip them below.
 		 */
 		do
@@ -769,7 +769,7 @@ class CI_Security {
 		}
 		while ($old !== $str);
 
-		return stripslashes($str);
+		return sconsignmentslashes($str);
 	}
 
 	// ----------------------------------------------------------------

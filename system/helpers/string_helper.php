@@ -90,7 +90,7 @@ if ( ! function_exists('strip_slashes'))
 	{
 		if ( ! is_array($str))
 		{
-			return stripslashes($str);
+			return sconsignmentslashes($str);
 		}
 
 		foreach ($str as $key => $val)

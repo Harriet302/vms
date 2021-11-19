@@ -1,7 +1,7 @@
 <footer class="main-footer">
-   <strong>Devloped By <a href="http://getsourcecodes.com" target="_blank">Getsourcecodes</a>.</strong>
+   <strong>Developed By <a href="http://getsourcecodes.com" target="_blank">MyProjectHarriet</a>.</strong>
    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.0
+      <b>Postal Management</b>
    </div>
 </footer>
 </div>
@@ -42,7 +42,7 @@
 <script src="<?= base_url(); ?>assets/plugins/datatables/vfs_fonts.js"></script>
 <script src="<?= base_url(); ?>assets/plugins/datatables/buttons.html5.min.js"></script>
 <?php } 
-   if($seg=='addgeofence' || $seg=='addtrips' || $seg=='geofence' || $seg == 'livestatus' || $seg == 'tracking') {
+   if($seg=='addgeofence' || $seg=='addconsignments' || $seg=='geofence' || $seg == 'livestatus' || $seg == 'tracking') {
       $data = sitedata();
     ?>
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>

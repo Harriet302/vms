@@ -3,7 +3,7 @@ if($this->config->item('company_name')!=='')
 {
   $company_name =  $this->config->item('company_name');
 } else {
-  $company_name = 'Vechicle Management';
+  $company_name = 'Postal Management';
 }
 ?>
 <!DOCTYPE html>
@@ -60,7 +60,7 @@ if($this->config->item('company_name')!=='')
       if(count($siteinfo)>=1) {
         echo output($siteinfo[0]['s_companyname']);
       } else {
-        echo 'Vehicle Management System';
+        echo 'Postal Management System';
       }
      ?></p>
                    

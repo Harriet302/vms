@@ -54,8 +54,8 @@
             <div class="info-box mb-3">
                <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-id-card"></i></span>
                <div class="info-box-content">
-                  <span class="info-box-text">Today Trips</span>
-                  <span class="info-box-number"><?= ($dashboard['tot_today_trips']!='') ? $dashboard['tot_today_trips']:'0' ?></span>
+                  <span class="info-box-text">Today consignments</span>
+                  <span class="info-box-number"><?= ($dashboard['tot_today_consignments']!='') ? $dashboard['tot_today_consignments']:'0' ?></span>
                </div>
                <!-- /.info-box-content -->
             </div>
@@ -77,7 +77,7 @@
               <span class="info-box-icon bg-black elevation-1"><i class="fa fa-building"></i></span>
               <div class="info-box-content">
                   <span class="info-box-text">Pick Up Stations</span>
-                  <span class="info-box-number"><?= ($dashboard['tot_today_trips']!='') ? $dashboard['tot_today_trips']:'0' ?></span>
+                  <span class="info-box-number"><?= ($dashboard['tot_today_consignments']!='') ? $dashboard['tot_today_consignments']:'0' ?></span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -99,7 +99,7 @@
                <table  class="datatable table card-table table-vcenter">
                   <thead>
                      <tr>
-                        <th>Name</th>
+                        <th>Vehicle</th>
                         <th>Current Location</th>
                      </tr>
                   </thead>
@@ -120,12 +120,12 @@
          <div class="col-sm-6 col-lg-6 ">
             <div class="card">
                <div class="card-header">
-                  <h2 class="card-title">Vechicle Running Status</h2>
+                  <h2 class="card-title">Driver Status</h2>
                </div>
                <table class="datatable table card-table">
                   <thead>
                      <tr>
-                        <th>Name</th>
+                        <th>Vehicle </th>
                         <th>Status</th>
                      </tr>
                   </thead>
@@ -195,12 +195,12 @@
                               </div>
                            </span>
                         </li>
-                        <?php }  } else { echo 'No reminders'; } ?>  
+                        <?php }  } else { echo 'No notifications'; } ?>  
                      </ul>
                   </div>
                   <!-- /.card-body -->
                   <div class="card-footer clearfix">
-                     <a href="<?= base_url() ?>reminder/addreminder"><button type="button" class="btn btn-info float-right"><i class="fas fa-plus"></i> Add Reminder</button></a>
+                     <a href="<?= base_url() ?>reminder/addreminder"><button type="button" class="btn btn-info float-right"><i class="fas fa-plus"></i> Add notification</button></a>
                   </div>
                </div>
             </div>

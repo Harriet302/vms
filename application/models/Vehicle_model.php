@@ -21,7 +21,7 @@ class vehicle_model extends CI_Model{
 		return $this->db->update('vehicles',$this->input->post());
 	}
 	public function getall_bookings($v_id) { 
-		$bookings = $this->db->select('*')->from('trips')->where('t_vechicle',$v_id)->order_by('t_id','desc')->get()->result_array();
+		$bookings = $this->db->select('*')->from('consignments')->where('t_vechicle',$v_id)->order_by('t_id','desc')->get()->result_array();
 		if(!empty($bookings)) {
 			foreach ($bookings as $key => $tripdataval) {
 				$newtripdata[$key] = $tripdataval;

@@ -60,9 +60,9 @@
       </div>
       <!-- /.col -->
       <div class="col-sm-4 invoice-col">
-        <b>Invoice #<?= output($data['s_inovice_prefix']).date('Ym').$tripdetails['t_id']; ?></b><br>
+        <b>Invoice #<?= output($data['s_inovice_prefix']).date('Ym').$consignmentdetails['t_id']; ?></b><br>
         <br>
-        <b>Order ID:</b> <?= output($tripdetails['t_id']) ?><br>
+        <b>Order ID:</b> <?= output($consignmentdetails['t_id']) ?><br>
         <b>Payment Due:</b> <?= date('Y-m-d') ?><br>
       </div>
       <!-- /.col -->
@@ -91,8 +91,8 @@
           <tr>
             <td>1</td>
             <td><?= output($data['s_inovice_servicename']) ?> </td>
-            <td>From  <br> <?= $tripdetails['t_trip_fromlocation']; ?> <br> to <br><?= $tripdetails['t_trip_tolocation']; ?> </td>
-            <td><?= output($data['s_price_prefix']).$tripdetails['t_trip_amount'] ?></td>
+            <td>From  <br> <?= $consignmentdetails['t_trip_fromlocation']; ?> <br> to <br><?= $consignmentdetails['t_trip_tolocation']; ?> </td>
+            <td><?= output($data['s_price_prefix']).$consignmentdetails['t_trip_amount'] ?></td>
           </tr>
           </tbody>
         </table>
@@ -117,16 +117,16 @@
           <table class="table">
             <tr>
               <th style="width:50%">Subtotal:</th>
-              <td><?= output($data['s_price_prefix']).$tripdetails['t_trip_amount'] ?></td>
+              <td><?= output($data['s_price_prefix']).$consignmentdetails['t_trip_amount'] ?></td>
             </tr>
             <tr>
               <th>Paid:</th>
               <td><?= output($data['s_price_prefix']).$totalpaidamt ?></td>
             </tr>
-            <?php if($tripdetails['t_trip_amount'] - $totalpaidamt !=0) { ?>
+            <?php if($consignmentdetails['t_trip_amount'] - $totalpaidamt !=0) { ?>
             <tr>
-              <th><?= ($tripdetails['t_trip_amount'] > $totalpaidamt)?'Pending':'Excess' ?>:</th>
-              <td><?= output($data['s_price_prefix']) .preg_replace('/[^\d\.]+/','',$tripdetails['t_trip_amount'] - $totalpaidamt)  ?></td>
+              <th><?= ($consignmentdetails['t_trip_amount'] > $totalpaidamt)?'Pending':'Excess' ?>:</th>
+              <td><?= output($data['s_price_prefix']) .preg_replace('/[^\d\.]+/','',$consignmentdetails['t_trip_amount'] - $totalpaidamt)  ?></td>
             </tr>
           <?php } ?>
           </table>

@@ -15,14 +15,14 @@ class Frontendbooking extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->model('trips_model');
-		$data['vechiclelist'] = $this->trips_model->getall_vechicle();
+		$this->load->model('consignments_model');
+		$data['vechiclelist'] = $this->consignments_model->getall_vechicle();
 		$this->load->view('frontend_booking',$data);
 	}
 	public function mybookings()
 	{
-		$this->load->model('trips_model');
-		$data['mybookings'] = $this->trips_model->getall_mybookings($this->session->userdata['session_data_fr']['c_id']);
+		$this->load->model('consignments_model');
+		$data['mybookings'] = $this->consignments_model->getall_mybookings($this->session->userdata['session_data_fr']['c_id']);
 		$this->load->view('frontend_booking_history',$data);
 	}
 	public function signup()
@@ -89,7 +89,7 @@ class Frontendbooking extends CI_Controller {
 		redirect('/');
 	}
 	public function book() {
-		$this->load->model('trips_model');
+		$this->load->model('consignments_model');
 		if($this->input->post('t_created_by')!='') {
 			$this->form_validation->set_rules('t_trip_fromlocation', 'From Location', 'required');
 			$this->form_validation->set_rules('t_trip_tolocation', 'To Location', 'required');
@@ -98,7 +98,7 @@ class Frontendbooking extends CI_Controller {
 			  $this->session->set_flashdata('warningmessage', validation_errors());
 			  redirect('/');
 			} else {
-				$response = $this->trips_model->add_trips($this->input->post());
+				$response = $this->consignments_model->add_consignments($this->input->post());
 				$bookingemail = $this->input->post('bookingemail');
 				if(isset($bookingemail)) {
 					$this->sendtripemail($this->input->post());

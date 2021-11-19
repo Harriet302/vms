@@ -68,7 +68,7 @@ if(!isset($this->session->userdata['session_data_fr'])) {
             <?php if(!empty($mybookings)){  
          foreach($mybookings as $mybooking){
          ?>
-            <div class="tb_route_inner_txt" ng-show="tripDetails.length!='0'" ng-repeat="trips in tripDetails">
+            <div class="tb_route_inner_txt" ng-show="consignmentdetails.length!='0'" ng-repeat="consignments in consignmentdetails">
                <div class="tb_route_inner" data-toggle="collapse" data-target="#demo{{$index}}" style="cursor:pointer;">
                   <div class="tb_route_from">
                      <div class="tb_tour"><?= $mybooking['t_trip_fromlocation']; ?><br>

@@ -8,7 +8,7 @@ class Reminder extends CI_Controller {
           parent::__construct();
           $this->load->database();
           $this->load->model('reminder_model');
-          $this->load->model('trips_model');
+          $this->load->model('consignments_model');
           $this->load->helper(array('form', 'url','string'));
           $this->load->library('form_validation');
           $this->load->library('session');
@@ -21,7 +21,7 @@ class Reminder extends CI_Controller {
 	}
 	public function addreminder()
 	{
-		$data['vechiclelist'] = $this->trips_model->getall_vechicle();
+		$data['vechiclelist'] = $this->consignments_model->getall_vechicle();
 		$this->template->template_render('reminder_add',$data);
 	}
 	public function insertreminder()

@@ -1,10 +1,12 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class Trips_model extends CI_Model{
-	public function add_trips($data) {   
+
+class Consignments_model extends CI_Model
+{
+	public function add_consignments($data) {   
 		unset($data['bookingemail']);
 		$insertdata = $data;
 		$insertdata['t_trackingcode'] = uniqid();
-		$this->db->insert('trips',$insertdata);
+		$this->db->insert('consignments',$insertdata);
 		//echo $this->db->last_query();
 		return $this->db->insert_id();
 	} 
@@ -15,24 +17,24 @@ class Trips_model extends CI_Model{
 		return $this->db->select('*')->from('vehicles')->get()->result_array();
 	} 
 	public function getall_mybookings($c_id) { 
-		return $this->db->select('*')->from('trips')->where('t_customer_id',$c_id)->order_by('t_id','asc')->get()->result_array();
+		return $this->db->select('*')->from('consignments')->where('t_customer_id',$c_id)->order_by('t_id','asc')->get()->result_array();
 	}
 	public function getall_driverlist() { 
 		return $this->db->select('*')->from('drivers')->get()->result_array();
 	}
-	public function getall_trips_expense($t_id) { 
-		return $this->db->select('*')->from('trips_expense')->where('e_trip_id',$t_id)->get()->result_array();
+	public function getall_consignments_expense($t_id) { 
+		return $this->db->select('*')->from('consignments_expense')->where('e_trip_id',$t_id)->get()->result_array();
 	} 
 	public function get_paymentdetails($t_id) { 
 		return $this->db->select('*')->from('trip_payments')->where('tp_trip_id',$t_id)->get()->result_array();
 	}
 	
-	public function getall_trips($trackingcode=false) { 
+	public function getall_consignments($trackingcode=false) { 
 		$newtripdata = array();
 		if($trackingcode) {
-			$tripdata = $this->db->select('*')->from('trips')->where('t_trackingcode',$trackingcode)->order_by('t_id','desc')->get()->result_array();
+			$tripdata = $this->db->select('*')->from('consignments')->where('t_trackingcode',$trackingcode)->order_by('t_id','desc')->get()->result_array();
 		} else {
-			$tripdata = $this->db->select('*')->from('trips')->order_by('t_id','desc')->get()->result_array();
+			$tripdata = $this->db->select('*')->from('consignments')->order_by('t_id','desc')->get()->result_array();
 		}
 		if(!empty($tripdata)) {
 			foreach ($tripdata as $key => $tripdataval) {
@@ -64,12 +66,12 @@ class Trips_model extends CI_Model{
             return '';
         }
     }
-	public function get_tripdetails($t_id) { 
-		return $this->db->select('*')->from('trips')->where('t_id',$t_id)->get()->result_array();
+	public function get_consignmentdetails($t_id) { 
+		return $this->db->select('*')->from('consignments')->where('t_id',$t_id)->get()->result_array();
 	}
-	public function update_trips($data) { 
+	public function update_consignments($data) { 
 		$this->db->where('t_id',$this->input->post('t_id'));
-		$this->db->update('trips',$data);
+		$this->db->update('consignments',$data);
 		return $this->input->post('t_id');
 	}
 	public function trip_reports($from,$to,$v_id) { 
@@ -80,7 +82,7 @@ class Trips_model extends CI_Model{
 			$where = array('t_start_date>='=>$from,'t_start_date<='=>$to,'t_vechicle'=>$v_id);
 		}
 		
-		$tripdata = $this->db->select('*')->from('trips')->where($where)->order_by('t_id','desc')->get()->result_array();
+		$tripdata = $this->db->select('*')->from('consignments')->where($where)->order_by('t_id','desc')->get()->result_array();
 		if(!empty($tripdata)) {
 			foreach ($tripdata as $key => $tripdataval) {
 				$newtripdata[$key] = $tripdataval;

@@ -13,8 +13,8 @@ class Tracking extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->model('trips_model');
-		$data['vechiclelist'] = $this->trips_model->getall_vechicle();
+		$this->load->model('consignments_model');
+		$data['vechiclelist'] = $this->consignments_model->getall_vechicle();
 		$this->template->template_render('tracking',$data);
 	}
 	public function livestatus()

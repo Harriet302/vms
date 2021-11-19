@@ -684,7 +684,7 @@ class CI_Input {
 		*/
 		if ( ! is_php('5.4') && get_magic_quotes_gpc())
 		{
-			$str = stripslashes($str);
+			$str = sconsignmentslashes($str);
 		}
 
 		// Clean UTF-8 if supported

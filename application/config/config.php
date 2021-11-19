@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = "http://localhost/vehicle/vms/";
+$config['base_url'] = "http://localhost/postal/pms/";
 
 /*
 |--------------------------------------------------------------------------
@@ -522,6 +522,6 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
-$config['google_api_key'] = 'AIzaSyC-dFHYjTqEVLndbN2gdvXsx09jfJHmNc8';
+$config['google_api_key'] = 'AIzaSyAre6p5EkPj462k9B0WbzPQO-E6s047aaw';
 
-$config['company_name'] = 'Vehicle Management + Live GPS Tracking';
+$config['company_name'] = 'Postal Management + Live GPS Tracking';

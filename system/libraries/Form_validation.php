@@ -1524,7 +1524,7 @@ class CI_Form_validation {
 			return $data;
 		}
 
-		return str_replace(array("'", '"', '<', '>'), array('&#39;', '&quot;', '&lt;', '&gt;'), stripslashes($data));
+		return str_replace(array("'", '"', '<', '>'), array('&#39;', '&quot;', '&lt;', '&gt;'), sconsignmentslashes($data));
 	}
 
 	// --------------------------------------------------------------------

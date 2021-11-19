@@ -45,29 +45,29 @@
                </ul>
             </li>
             <?php } ?>
-            <?php if(userpermission('lr_trips_list') || userpermission('lr_trips_list_view')) { ?>
-            <li class="nav-item has-treeview <?php echo ((activate_menu('trips'))=='active') ? 'menu-open':'' ?>
-               <?php echo ((activate_menu('addtrips'))=='active') ? 'menu-open':'' ?><?php echo ((activate_menu('edittrip'))=='active') ? 'menu-open':'' ?><?php echo ((activate_menu('details'))=='active') ? 'menu-open':'' ?>">
-               <a href="#" class="nav-link <?php echo activate_menu('trips');?> <?php echo activate_menu('addtrips');?> <?php echo activate_menu('edittrip');?><?php echo activate_menu('details');?>">
+            <?php if(userpermission('lr_consignments_list') || userpermission('lr_consignments_list_view')) { ?>
+            <li class="nav-item has-treeview <?php echo ((activate_menu('consignments'))=='active') ? 'menu-open':'' ?>
+               <?php echo ((activate_menu('addconsignments'))=='active') ? 'menu-open':'' ?><?php echo ((activate_menu('editconsignment'))=='active') ? 'menu-open':'' ?><?php echo ((activate_menu('details'))=='active') ? 'menu-open':'' ?>">
+               <a href="#" class="nav-link <?php echo activate_menu('consignments');?> <?php echo activate_menu('addconsignments');?> <?php echo activate_menu('editconsignment');?><?php echo activate_menu('details');?>">
                   <i class="nav-icon fas fa-road"></i>
                   <p>
-                     Trips
+                     Consignments
                      <i class="right fas fa-angle-left"></i>
                   </p>
                </a>
                <ul class="nav nav-treeview">
-                  <?php if(userpermission('lr_trips_list')) { ?>
+                  <?php if(userpermission('lr_consignments_list')) { ?>
                   <li class="nav-item">
-                     <a href="<?= base_url(); ?>trips" class="nav-link <?php echo activate_menu('trips');?><?php echo activate_menu('edittrip');?><?php echo activate_menu('details');?>">
+                     <a href="<?= base_url(); ?>consignments" class="nav-link <?php echo activate_menu('consignments');?><?php echo activate_menu('edittrip');?><?php echo activate_menu('details');?>">
                         <i class="nav-icon fas faa-list"></i>
-                        <p>Trips List</p>
+                        <p>Consignments List</p>
                      </a>
                   </li>
-                  <?php } if(userpermission('lr_trips_add')) { ?>
+                  <?php } if(userpermission('lr_consignments_add')) { ?>
                   <li class="nav-item">
-                     <a href="<?= base_url(); ?>trips/addtrips" class="nav-link <?php echo activate_menu('addtrips');?>">
+                     <a href="<?= base_url(); ?>consignments/addconsignments" class="nav-link <?php echo activate_menu('addconsignments');?>">
                         <i class="nav-icon fas faa-plus"></i>
-                        <p>Add Trip</p>
+                        <p>Add Consignment</p>
                      </a>
                   </li>
                   <?php } ?>
@@ -270,7 +270,7 @@
                   <li class="nav-item">
                      <a href="<?= base_url(); ?>reports/booking" class="nav-link <?php echo activate_menu('booking');?>">
                         <i class="fas fa-cosg icon nav-icon"></i>
-                        <p>Trips</p>
+                        <p>consignments</p>
                      </a>
                   </li>
                   <li class="nav-item">

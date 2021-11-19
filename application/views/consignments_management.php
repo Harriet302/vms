@@ -2,13 +2,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Bookings
+            <h1 class="m-0 text-dark">Consignments
             </h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="<?= base_url(); ?>/dashboard">Dashboard</a></li>
-              <li class="breadcrumb-item active">Bookings</li>
+              <li class="breadcrumb-item active">Consignments</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -28,29 +28,29 @@
                         <tr>
                           <th class="w-1">S.No</th>
                           <th>Customer</th>
-                          <th>Vechicle</th>
+                          <th>Vehicle</th>
                           <th>Type</th>
                           <th>Driver</th>
-                          <th>Trip Status</th>
-                           <?php if(userpermission('lr_trips_list_edit')) { ?>
+                          <th>Status</th>
+                           <?php if(userpermission('lr_consignments_list_edit')) { ?>
                           <th>Action</th>
                           <?php } ?>
                         </tr>
                       </thead>
                       <tbody>
 
-                      <?php if(!empty($triplist)){ 
+                      <?php if(!empty($consignmentslist)){ 
                            $count=1;
-                           foreach($triplist as $triplists){
+                           foreach($consignmentslist as $consignmentslist){
                            ?>
                         <tr>
                            <td> <?php echo output($count); $count++; ?></td>
-                           <td> <?php echo ucfirst($triplists['t_customer_details']->c_name); ?></td>
-                           <td> <?php echo output($triplists['t_vechicle_details']->v_name); ?></td>
-                           <td><?php echo ucfirst($triplists['t_type']); ?></td>
-                           <td><?= (isset($triplists['t_driver_details']->d_name))?$triplists['t_driver_details']->d_name:'<span class="badge badge-danger">Yet to Assign</span>'; ?></td>
+                           <td> <?php echo ucfirst($consignmentslist['t_customer_details']->c_name); ?></td>
+                           <td> <?php echo output($consignmentslist['t_vechicle_details']->v_name); ?></td>
+                           <td><?php echo ucfirst($consignmentslist['t_type']); ?></td>
+                           <td><?= (isset($consignmentlist['t_driver_details']->d_name))?$consignmentslist['t_driver_details']->d_name:'<span class="badge badge-danger">Yet to Assign</span>'; ?></td>
                            <td> <?php 
-                              switch($triplists['t_trip_status']){
+                              switch($consignmentslist['t_trip_status']){
                                   case 'ongoing':
                                       $status = '<span class="badge badge-info">Ongoing</span>';
                                       break;
@@ -71,12 +71,12 @@
                               ?>
                              <?=  $status ?>  
                             </td>
-                             <?php if(userpermission('lr_trips_list_edit')) { ?>
+                             <?php if(userpermission('lr_consignments_list_edit')) { ?>
                                <td>
-                            <a class="icon" href="<?php echo base_url(); ?>trips/edittrip/<?php echo output($triplists['t_id']); ?>">
+                            <a class="icon" href="<?php echo base_url(); ?>consignments/editconsignment/<?php echo output($consignmentslist['t_id']); ?>">
                               <i class="fa fa-edit"></i>
                             </a> | 
-                            <a class="icon" href="<?php echo base_url(); ?>trips/details/<?php echo output($triplists['t_id']); ?>">
+                            <a class="icon" href="<?php echo base_url(); ?>consignments/details/<?php echo output($consignmentslist['t_id']); ?>">
                               <i class="fa fa-eye"></i>
                             </a>
                           </td>

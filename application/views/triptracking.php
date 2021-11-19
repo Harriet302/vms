@@ -24,23 +24,23 @@
       <!-- Left navbar links -->
       <ul class="navbar-nav">
         <li class="nav-item">
-             <span class="nav-link"><b>From :</b> <?= $tripdetails['t_trip_fromlocation'] ?></span>
+             <span class="nav-link"><b>From :</b> <?= $consignmentdetails['t_trip_fromlocation'] ?></span>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <span class="nav-link"><b>To : </b><?= $tripdetails['t_trip_tolocation'] ?></span>
+          <span class="nav-link"><b>To : </b><?= $consignmentdetails['t_trip_tolocation'] ?></span>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <span class="nav-link"><b>Vechicle No : </b><?= $tripdetails['t_vechicle_details']->v_registration_no ?></span>
+          <span class="nav-link"><b>Vechicle No : </b><?= $consignmentdetails['t_vechicle_details']->v_registration_no ?></span>
         </li>
          <li class="nav-item d-none d-sm-inline-block">
-          <span class="nav-link"><b>Driver : </b><?= (isset($tripdetails['t_driver_details']->d_name))?$tripdetails['t_driver_details']->d_name:'<span class="badge badge-danger">Yet to Assign</span>'; ?></span>
+          <span class="nav-link"><b>Driver : </b><?= (isset($consignmentdetails['t_driver_details']->d_name))?$consignmentdetails['t_driver_details']->d_name:'<span class="badge badge-danger">Yet to Assign</span>'; ?></span>
         </li>
       </ul>
 
     </nav>
     </div>
-    <input type="hidden" value="<?= $tripdetails['t_vechicle_details']->v_id ?>" id="v_id" name="v_id">
-    <input type="hidden" value="<?= $tripdetails['t_trip_status'] ?>" id="t_trip_status" name="t_trip_status">
+    <input type="hidden" value="<?= $consignmentdetails['t_vechicle_details']->v_id ?>" id="v_id" name="v_id">
+    <input type="hidden" value="<?= $consignmentdetails['t_trip_status'] ?>" id="t_trip_status" name="t_trip_status">
     <div class="col-lg-12 col-md-12" id="map_canvas" style="width: 100%; height: 530px"></div>
 
 <!-- /.login-box -->

@@ -8,12 +8,12 @@ class Reports extends CI_Controller {
           $this->load->model('vehicle_model');
           $this->load->model('incomexpense_model');
           $this->load->model('fuel_model');
-          $this->load->model('trips_model');
+          $this->load->model('consignments_model');
           $this->load->library('session');
     }
 	public function booking()	{
 		if(isset($_POST['bookingreport'])) {
-			$triplist = $this->trips_model->trip_reports($this->input->post('booking_from'),$this->input->post('booking_to'),$this->input->post('booking_vechicle'));
+			$triplist = $this->consignments_model->trip_reports($this->input->post('booking_from'),$this->input->post('booking_to'),$this->input->post('booking_vechicle'));
 			if(empty($triplist)) {
 				$this->session->set_flashdata('warningmessage', 'No bookings found..');
 				$data['triplist'] = '';

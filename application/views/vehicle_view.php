@@ -140,7 +140,7 @@
                                       ?>
                                      <?=  $status ?>  
                                   </td>
-                                  <td> <a class="icon" target="_blank" href="<?php echo base_url(); ?>trips/details/<?php echo output($bookingsdata['t_id']); ?>">
+                                  <td> <a class="icon" target="_blank" href="<?php echo base_url(); ?>consignments/details/<?php echo output($bookingsdata['t_id']); ?>">
                                      <i class="fa fa-eye"></i>
                                     </a> 
                                   </td>

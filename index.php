@@ -220,6 +220,7 @@ switch (ENVIRONMENT)
 		echo 'Your system folder path does not appear to be set correctly. Please open the following file and correct this: '.pathinfo(__FILE__, PATHINFO_BASENAME);
 		exit(3); // EXIT_CONFIG
 	}
+	
 
 /*
  * -------------------------------------------------------------------

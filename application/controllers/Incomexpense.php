@@ -21,8 +21,8 @@ class Incomexpense extends CI_Controller {
 	}
 	public function addincomexpense()
 	{
-		$this->load->model('trips_model');
-		$data['vechiclelist'] = $this->trips_model->getall_vechicle();
+		$this->load->model('consignments_model');
+		$data['vechiclelist'] = $this->consignments_model->getall_vechicle();
 		$this->template->template_render('incomexpense_add',$data);
 	}
 	public function insertincomexpense()
@@ -43,8 +43,8 @@ class Incomexpense extends CI_Controller {
 	}
 	public function editincomexpense()
 	{
-		$this->load->model('trips_model');
-		$data['vechiclelist'] = $this->trips_model->getall_vechicle();
+		$this->load->model('consignments_model');
+		$data['vechiclelist'] = $this->consignments_model->getall_vechicle();
 		$e_id = $this->uri->segment(3);
 		$data['incomexpensedetails'] = $this->Incomexpense_model->editincomexpense($e_id);
 		$this->template->template_render('incomexpense_add',$data);

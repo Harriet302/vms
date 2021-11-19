@@ -11,7 +11,7 @@ class ApplicationFee extends ApiResource
 {
     /**
      * This is a special case because the application fee endpoint has an
-     *    underscore in it. The parent `className` function strips underscores.
+     *    underscore in it. The parent `className` function sconsignments underscores.
      *
      * @return string The name of the class.
      */

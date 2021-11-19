@@ -158,21 +158,21 @@
                       </div>
                       <div class="form-group mr-4">
                         <div class="custom-control custom-checkbox">
-                          <input type="checkbox" value="1" <?php if(isset($userdetails[0]['lr_vech_list'])) { echo ($userdetails[0]['lr_trips_list']==1 ? 'checked' : ''); } ?> name="permissions[lr_trips_list]" class="custom-control-input" id="lr_trips_list">
-                          <label class="custom-control-label" for="lr_trips_list">All Bookings</label>
+                          <input type="checkbox" value="1" <?php if(isset($userdetails[0]['lr_vech_list'])) { echo ($userdetails[0]['lr_consignments_list']==1 ? 'checked' : ''); } ?> name="permissions[lr_consignments_list]" class="custom-control-input" id="lr_consignments_list">
+                          <label class="custom-control-label" for="lr_consignments_list">All Bookings</label>
                         </div>
                       </div>
                       <div class="form-group mr-4">
                         <div class="custom-control custom-checkbox">
-                          <input type="checkbox" value="1" <?php if(isset($userdetails[0]['lr_vech_list'])) { echo ($userdetails[0]['lr_trips_list_edit']==1 ? 'checked' : ''); } ?> name="permissions[lr_trips_list_edit]" class="custom-control-input" id="lr_trips_list_edit">
-                          <label class="custom-control-label" for="lr_trips_list_edit">Edit</label>
+                          <input type="checkbox" value="1" <?php if(isset($userdetails[0]['lr_vech_list'])) { echo ($userdetails[0]['lr_consignments_list_edit']==1 ? 'checked' : ''); } ?> name="permissions[lr_consignments_list_edit]" class="custom-control-input" id="lr_consignments_list_edit">
+                          <label class="custom-control-label" for="lr_consignments_list_edit">Edit</label>
                         </div>
                       </div>
                       
                        <div class="form-group mr-4">
                         <div class="custom-control custom-checkbox">
-                          <input type="checkbox" value="1" <?php if(isset($userdetails[0]['lr_vech_list'])) { echo ($userdetails[0]['lr_trips_add']==1 ? 'checked' : ''); } ?> name="permissions[lr_trips_add]" class="custom-control-input" id="lr_trips_add">
-                          <label class="custom-control-label" for="lr_trips_add">Add New</label>
+                          <input type="checkbox" value="1" <?php if(isset($userdetails[0]['lr_vech_list'])) { echo ($userdetails[0]['lr_consignments_add']==1 ? 'checked' : ''); } ?> name="permissions[lr_consignments_add]" class="custom-control-input" id="lr_consignments_add">
+                          <label class="custom-control-label" for="lr_consignments_add">Add New</label>
                         </div>
                       </div>
                   </div>

@@ -15,9 +15,9 @@ class Triptracking extends CI_Controller {
 	public function index()
 	{
 		$trackcode = $this->uri->segment(2);
-		$this->load->model('trips_model');
-		$tripdetails = $this->trips_model->getall_trips($trackcode);
-		$data['tripdetails'] = (isset($tripdetails[0])?$tripdetails[0]:array());
+		$this->load->model('consignments_model');
+		$consignmentdetails = $this->consignments_model->getall_consignments($trackcode);
+		$data['consignmentdetails'] = (isset($consignmentdetails[0])?$consignmentdetails[0]:array());
 		$this->load->view('triptracking',$data);
 	}
 	 
